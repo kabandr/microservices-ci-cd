@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+      - name: Create Kubernetes cluster
+        env:
+          DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        run: |
+          terraform init
+          terraform apply -auto-approve -var "do_token=$DO_TOKEN"
+      - name: Build and push Docker images
+        run: |
+          cd frontend
+          docker build -t reactjs-frontend:latest .
+          docker push reactjs-frontend:latest
+          cd ../backend
+          docker build -t express-server:latest .
+          docker push express-server:latest
+          cd ..
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f deployment.yaml
