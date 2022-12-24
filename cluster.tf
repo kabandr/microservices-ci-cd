@@ -13,6 +13,12 @@ variable "do_token" {
   type = string
 }
 
+# Cluster status check
+output "cluster_status" {
+  value = digitalocean_kubernetes_cluster.cluster.status
+}
+
+
 # Configure the DigitalOcean provider
 provider "digitalocean" {
   token = "${var.do_token}"
