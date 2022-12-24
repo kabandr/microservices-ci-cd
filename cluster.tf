@@ -8,6 +8,11 @@ terraform {
   }
 }
 
+# Declare DigitalOcean token
+variable "do_token" {
+  type = string
+}
+
 # Configure the DigitalOcean provider
 provider "digitalocean" {
   token = "${var.do_token}"
