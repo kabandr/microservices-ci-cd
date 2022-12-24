@@ -25,10 +25,10 @@ jobs:
         run: |
           cd frontend
           docker build -t reactjs-frontend:latest .
-          docker push reactjs-frontend:latest
+          docker push kabandr/reactjs-frontend:latest
           cd ../backend
           docker build -t express-server:latest .
-          docker push express-server:latest
+          docker push kabandr/express-server:latest
           cd ..
  
       - name: Set up Terraform
