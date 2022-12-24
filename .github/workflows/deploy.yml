@@ -20,6 +20,13 @@ jobs:
         run: |
           terraform init
           terraform apply -auto-approve -var "do_token=$DO_TOKEN"
+      - name: Check cluster status
+        run: |
+          cluster_status=$(terraform output cluster_status)
+          if [ "$cluster_status" = "running" ]; then
+            echo "Cluster already running, skipping deployment"
+            exit 0
+          fi
       - name: Build and push Docker images
         run: |
           cd frontend
