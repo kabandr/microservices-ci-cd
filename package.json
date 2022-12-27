@@ -1,0 +1,24 @@
+{
+  "name": "microservices-ci-cd",
+  "version": "1.0.0",
+  "description": "An example of CI/CD microservices deployment on Digital Ocean using Terraform, Kubernetes, Github Actions and Docker",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kabandr/microservices-ci-cd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kabandr/microservices-ci-cd/issues"
+  },
+  "homepage": "https://github.com/kabandr/microservices-ci-cd#readme",
+  "dependencies": {
+    "shelljs": "^0.8.5"
+  }
+}
