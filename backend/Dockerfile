@@ -1,8 +1,8 @@
-FROM node:12.18.3-alpine
+FROM node:18.12.1-alpine3.16
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --frozen-lockfile
+RUN npm install
 COPY . ./
 
 EXPOSE 4000

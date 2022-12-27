@@ -1,8 +1,8 @@
-FROM node:12.18.3-alpine as build
+FROM node:18.12.1-alpine3.16 as build
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --frozen-lockfile
+RUN npm install
 COPY . ./
 RUN npm run build
 
