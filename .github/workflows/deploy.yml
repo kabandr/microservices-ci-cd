@@ -24,10 +24,10 @@ jobs:
       - name: Build and push Docker images
         run: |
           cd frontend
-          docker build -t reactjs-frontend:latest . kabandr/reactjs-frontend
+          docker build -t reactjs-frontend:latest .
           docker push kabandr/reactjs-frontend:latest
           cd ../backend
-          docker build -t express-server:latest . kabandr/express-server
+          docker build -t express-server:latest .
           docker push kabandr/express-server:latest
           cd ..
  
