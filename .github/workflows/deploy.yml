@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Build and push Docker images
+      - name: Build and push Docker images to Docker Registry
         run: |
           cd frontend
           docker build -t reactjs-frontend:latest .
